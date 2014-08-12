@@ -1,0 +1,27 @@
+{
+	"name":"nfe",
+	"version":"0.1.0",
+	"description":"front end integrated solution, seajs",
+	"main":"nfe.js",
+	"preferGlobal":true,
+	"bin":{
+		"nfe":"bin/nfe"
+	},
+	"keywords":["fis", "seajs"],
+	"repository":{
+		"type":"git",
+		"url":"https://github.com/opedfe/nfe.git"
+	},
+	"author":"mfylee",
+	"dependencies":{
+		"fis":"1.7.14",
+		"fis-command-install":"0.0.7",
+		"fis-command-server":"0.6.11",
+		"fis-parser-less":"0.1.1",
+		"fis-lint-jshint":"0.0.9",
+		"fis-parser-marked":"0.0.5",
+		"fis-parser-handlebars":"0.0.1",
+		"fis-optimizer-html-minifier":"0.0.9"
+	},
+	"license":"MIT"
+}
