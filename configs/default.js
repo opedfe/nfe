@@ -40,13 +40,13 @@ module.exports = {
 			isMod:false,
 			useSprite:true,
 			id:'$1',
-			release:'/modules/$1/$1.$2'
+			release:'/static/modules/$1/$1.$2'
 		},{
 			reg:/^\/libs\/(.*\.(js|coffee|less|css))$/i,
 			isMod:false,
 			useSprite:true,
 			id:'$1',
-			release:'/libs/$1'
+			release:'/static/libs/$1'
 		},{
 			reg:/^\/pages\/(.*)\.(js|coffee)$/i,
 			isMod:true,
@@ -56,8 +56,10 @@ module.exports = {
 		},{
 			reg:/^\/pages\/(.*)\.(less|css)$/i,
 			isMod:true,
+            isCssLike:true,
 			useSprite:true,
-			release:'/static/css/$1.$2'
+			id:'$1.css',
+			release:'/static/css/$1'
 		},{
 			reg:/^\/pages\/(.*)\.(git|png|jpg|jpeg|bmp)$/i,
 			useSprite:true,
