@@ -39,12 +39,29 @@ module.exports = {
 			reg:/^\/modules\/([^\/]+)\/\1\.(js|coffee|less|css)$/i,
 			isMod:false,
 			useSprite:true,
-			id:'$1'
+			id:'$1',
+			release:'/modules/$1/$1.$2'
 		},{
-			reg:/^\/pages\/(.*)\.(js|coffee|less|css)$/i,
+			reg:/^\/libs\/(.*\.(js|coffee|less|css))$/i,
+			isMod:false,
+			useSprite:true,
+			id:'$1',
+			release:'/libs/$1'
+		},{
+			reg:/^\/pages\/(.*)\.(js|coffee)$/i,
 			isMod:true,
 			useSprite:true,
-			id:'$1'
+			id:'$1',
+			release:'/static/js/$1.$2'
+		},{
+			reg:/^\/pages\/(.*)\.(less|css)$/i,
+			isMod:true,
+			useSprite:true,
+			release:'/static/css/$1.$2'
+		},{
+			reg:/^\/pages\/(.*)\.(git|png|jpg|jpeg|bmp)$/i,
+			useSprite:true,
+			release:'/static/img/$1.$2'
 		},{
 			reg:/\.mixin\.less$/,
 			release:false
@@ -52,6 +69,10 @@ module.exports = {
 			reg:/\.(js|coffee|less|css)$/,
 			useSprite:true,
 			useMap:false
+		},{
+			reg:/\/pages\/(.*\.(?:htm|html|php|jsp))$/,
+			useSprite:true,
+			release:'/template/$1'
 		},{
 			reg:'**',
 			useHash:false,
