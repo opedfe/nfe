@@ -1,18 +1,18 @@
 {
 	"name":"nfe",
-	"version":"0.1.0",
-	"description":"front end integrated solution, seajs",
+	"version":"0.0.1",
+	"description":"front end integrated solution, fis, nfejs",
 	"main":"nfe.js",
 	"preferGlobal":true,
 	"bin":{
 		"nfe":"bin/nfe"
 	},
-	"keywords":["fis", "seajs"],
+	"keywords":["fis", "nfejs", "require"],
 	"repository":{
 		"type":"git",
 		"url":"https://github.com/opedfe/nfe.git"
 	},
-	"author":"mfylee",
+	"author":"mfylee@163.com",
 	"dependencies":{
 		"fis":"1.7.14",
 		"fis-command-install":"0.0.7",
