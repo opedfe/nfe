@@ -25,7 +25,7 @@
     "fis-parser-handlebars": "0.0.1",
     "fis-parser-less": "0.1.1",
     "fis-parser-marked": "0.0.5",
-    "nfe-command-install": "0.0.1"
+    "nfe-command-install": "0.0.2"
   },
   "license": "MIT"
 }

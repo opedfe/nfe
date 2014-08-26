@@ -25,7 +25,7 @@ module.exports = {
 		},
 		optimizer:{
 			'uglify-js':{
-				//不压缩require关键字，seajs需要
+				//不压缩require关键字，nfejs需要
 				except:['require']
 			}
 		}

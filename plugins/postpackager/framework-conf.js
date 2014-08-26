@@ -1,4 +1,5 @@
 
+var path = require('path');
 
 module.exports = function(ret, conf, settings, opt){
 
@@ -23,7 +24,12 @@ module.exports = function(ret, conf, settings, opt){
 		if(file.isMod && file.isJsLike){
 			var deps = [];
 			for(var i=0; i<file.requires.length; i++){
-				deps.push('\'' + file.requires[i] + '\'');
+				var dep = file.requires[i];
+				if(dep.indexOf('.') === 0){
+					dep = path.join(path.dirname(id), dep);
+				}
+				deps.push('\'' + dep + '\'');
+				//deps.push('\'' + file.requires[i] + '\'');
 			}
 			var cnt = file.getContent();
 			cnt = '/**\n * Build By nfe, Base on FIS\n * @author noahfe\n */\ndefine(\'' + file.getId() + '\', [' + deps.join(',') + '], function(require, exports, module){' + cnt + '});';
