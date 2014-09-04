@@ -21,6 +21,7 @@ module.exports = function(ret, conf, settings, opt){
 	//找到所有的源码文件，对其进行配置文件script标签插入
 	fis.util.map(ret.src, function(subpath, file){
 		var id = file.getId();
+		/**
 		if(file.isMod && file.isJsLike){
 			var deps = [];
 			for(var i=0; i<file.requires.length; i++){
@@ -32,10 +33,11 @@ module.exports = function(ret, conf, settings, opt){
 				//deps.push('\'' + file.requires[i] + '\'');
 			}
 			var cnt = file.getContent();
-			cnt = '/**\n * Build By nfe, Base on FIS\n * @author noahfe\n */\ndefine(\'' + file.getId() + '\', [' + deps.join(',') + '], function(require, exports, module){' + cnt + '});';
+			cnt = 'define(\'' + file.getId() + '\', [' + deps.join(',') + '], function(require, exports, module){' + cnt + '});';
 			file.setContent(cnt);
 			//ret.pkg[subpath + '.js'] = file;
 		}
+		*/
 		if(file.isHtmlLike){
 			var cnt = file.getContent();
 			if(/\bnfe\.use\s*\(/.test(cnt)){//有用到nfe.use才插入配置

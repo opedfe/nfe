@@ -13,7 +13,7 @@ module.exports = {
 		lint:{
 			js:'jshint'
 		},
-		postprocessor:{
+		preprocessor:{
 			js: plugins.define
 		},
 		postpackager:[plugins.frameworkConf]
@@ -41,6 +41,24 @@ module.exports = {
 			useSprite:true,
 			id:'$1',
 			release:'/static/modules/$1/$1.$2'
+		},{
+			reg:/^\/modules\/(\w+)(?:-[\d\.]*)?[^\/]+\/\1\.(js|coffee|less|css)$/i,
+			isMod:false,
+			useSprite:true,
+			id:'$1',
+			release:'/static/modules/$1/$1.$2'
+		},{
+			reg:/^\/modules\/nuit(?:-[\d\.]*)\/([^\/]+)\/\1\.(js|coffee)$/i,
+			isMod:false,
+			useSprite:true,
+			id:'nuit/$1/$1',
+			release:'/static/modules/nuit/$1/$1.$2'
+		},{
+			reg:/^\/modules\/nuit(?:-[\d\.]*)\/([^\/]+)\/\1\.(less|css)$/i,
+			isMod:false,
+			useSprite:true,
+			id:'nuit/$1/$1.css',
+			release:'/static/modules/nuit/$1/$1.$2'
 		},{
 			reg:/^\/libs\/(.*\.(js|coffee|less|css))$/i,
 			isMod:false,
