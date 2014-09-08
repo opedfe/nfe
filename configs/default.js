@@ -20,10 +20,10 @@ module.exports = {
 			js: plugins.define
 		},
 		postprocessor:{
-			js: plugins.postprocessor
+			//js: plugins.postprocessor
 		},
-		prepackager:[plugins.prepackager],
-		packager:[plugins.packager],
+		//prepackager:[plugins.prepackager],
+		//packager:[plugins.packager],
 		postpackager:[plugins.frameworkConf]
 	},
 	settings:{
