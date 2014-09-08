@@ -2,6 +2,9 @@
 #前端模块化开发框架
 
 
+###v0.0.3
+ - 支持模块化依赖自动合并，如：`require('./view?_inline');`
+
 ##安装
 ```sh
 npm install -g nfe

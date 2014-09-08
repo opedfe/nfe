@@ -1,6 +1,6 @@
 {
   "name": "nfe",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "front end integrated solution, fis, nfejs",
   "main": "nfe.js",
   "preferGlobal": true,
