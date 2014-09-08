@@ -21,6 +21,7 @@ function parseDependencies(code) {
 
 module.exports = function(content, file){
 
+	var root = fis.project.getProjectPath();
 	//if(file.isMod){
 		//content = 'define(\'' + file.getId() + '\', function(require, exports, module){' + content + '\n\n})';
 	//}
@@ -31,15 +32,36 @@ module.exports = function(content, file){
 			if(requires.length == 0){
 				requires = parseDependencies(content);
 			}
+			var inlines = [];
 			for(var i=0; i<requires.length; i++){
 				var dep = requires[i];
+				if(/\?__inline/.test(dep)){
+					dep = dep.replace('?__inline', '');
+					var inline = dep;
+					if(dep.indexOf('.') === 0){
+						//dep = path.join(file.subdirname, dep);
+					}else{
+						inline = path.join('/pages/', dep);
+					}
+					if(!/\.[css|less]$/.test(inline)){
+						inlines.push(inline);
+					}
+				}
 				if(dep.indexOf('.') === 0){
 					dep = path.join(path.dirname(id), dep);
 				}
 				deps.push('\'' + dep + '\'');
 				//deps.push('\'' + file.requires[i] + '\'');
 			}
-			content = '/**\n * Build By nfe, Base on FIS\n * @author noahfe\n */\ndefine(\'' + file.getId() + '\', [' + deps.join(',') + '], function(require, exports, module){' + content + '});';
+			content = '/**\n * Build By nfe(base on FIS)\n * @author noahfe@baidu.com\n */\ndefine(\'' + file.getId() + '\', [' + deps.join(',') + '], function(require, exports, module){' + content + '});';
+			for(var i=0; i<inlines.length; i++){
+				var dep = inlines[i];
+				if(!/\.js$/.test(dep)){
+					dep += '.js';
+				}
+				content += '\n__inline(\''+dep+'\');';
+			};
+
 			file.isMod = false;
 		}
 	return content;

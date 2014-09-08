@@ -1,5 +1,8 @@
 var plugins = {
 	define: require('../plugins/postprocessor/define.js'),
+	postprocessor: require('../plugins/postprocessor/postprocessor.js'),
+	packager: require('../plugins/packager.js'),
+	prepackager: require('../plugins/prepackager.js'),
 	frameworkConf: require('../plugins/postpackager/framework-conf.js')
 };
 
@@ -16,6 +19,11 @@ module.exports = {
 		preprocessor:{
 			js: plugins.define
 		},
+		postprocessor:{
+			js: plugins.postprocessor
+		},
+		prepackager:[plugins.prepackager],
+		packager:[plugins.packager],
 		postpackager:[plugins.frameworkConf]
 	},
 	settings:{
@@ -33,7 +41,8 @@ module.exports = {
 	roadmap:{
 		ext:{
 			less:'css',
-			coffee:'js'
+			coffee:'js',
+			md:'html'
 		},
 		path:[{
 			reg:/^\/modules\/([^\/]+)\/\1\.(js|coffee|less|css)$/i,
@@ -42,7 +51,7 @@ module.exports = {
 			id:'$1',
 			release:'/static/modules/$1/$1.$2'
 		},{
-			reg:/^\/modules\/(\w+)(?:-[\d\.]*)?[^\/]+\/\1\.(js|coffee|less|css)$/i,
+			reg:/^\/modules\/(\w+)(?:-[\d\.]*)?\/\1\.(js|coffee|less|css)$/i,
 			isMod:false,
 			useSprite:true,
 			id:'$1',
@@ -59,6 +68,10 @@ module.exports = {
 			useSprite:true,
 			id:'nuit/$1/$1.css',
 			release:'/static/modules/nuit/$1/$1.$2'
+		},{
+			reg:/^\/modules\/(.*)\.(git|png|jpg|jpeg|bmp)$/i,
+			useSprite:false,
+			release:'/static/modules/img/$1.$2'
 		},{
 			reg:/^\/libs\/(.*\.(js|coffee|less|css))$/i,
 			isMod:false,

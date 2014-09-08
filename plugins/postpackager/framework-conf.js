@@ -8,7 +8,12 @@ module.exports = function(ret, conf, settings, opt){
 	var fis_nfejs_conf = fis.config.get('nfejs', {});
 	fis_nfejs_conf.alias = fis_nfejs_conf.alias || {};
 	fis.util.map(ret.map.res, function(id, res){
-		fis_nfejs_conf.alias[id] = res.uri;
+		if(typeof res.pkg != 'undefined' && res.deps && res.deps.length > 0){
+			var p = ret.map.pkg[res.pkg];
+			fis_nfejs_conf.alias[id] = p.uri;
+		}else{
+			fis_nfejs_conf.alias[id] = res.uri;
+		}
 	});
 	//构造nfejs的config.js配置文件
 	var nfejs_config = fis.file(fis.project.getProjectPath(), 'nfe-config.js');
